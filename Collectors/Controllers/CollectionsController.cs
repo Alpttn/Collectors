@@ -43,7 +43,7 @@ namespace Collectors.Controllers
                 return NotFound();
             }
 
-            var collection = await _context.Collections
+            var collection = await _context.Collections.Include(c => c.Collectibles)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (collection == null)
             {
